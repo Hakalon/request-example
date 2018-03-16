@@ -5,6 +5,7 @@
         "no-console":"off",
         "no-plusplus":"off",
         "comma-dangle":"off",
-        "arrow-parens": ["error", "as-needed"]
+        "arrow-parens": ["error", "as-needed"],
+        "no-use-before-define": "warn"
     }
 }

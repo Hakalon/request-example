@@ -6,10 +6,18 @@
   "repository": "git.idsl.pw/Hakalon/request-example",
   "author": "Steve Lai <tf4ewg@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "jssha": "^2.3.1",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
+  },
   "devDependencies": {
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
+  },
+  "scripts": {
+    "start": "node build/index.js",
+    "devstart": "babel-node src/index.js"
   }
 }
