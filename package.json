@@ -7,17 +7,20 @@
   "author": "Steve Lai <tf4ewg@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "jssha": "^2.3.1",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
   },
   "scripts": {
     "start": "node build/index.js",
-    "devstart": "babel-node src/index.js"
+    "devstart": "babel-node src/index.js",
+    "build": "babel src -d build"
   }
 }
