@@ -14,18 +14,15 @@ The difference between these three modules is that **request-promise** provides 
 
 And in this project, I use **request-promise-native**.
 
-### Installation
+# Installation
 
-
-
-### Description:
-In this branch...
-[link](https://google.com)
-*Strong*
-# Tilte
-
-### Description
-
+Because request-promise-native is a **upper module based on request**, you need to install request first, then install request-promise-native.
 ```=bash
-Code or Command ...
+yarn add request
+// or
+npm install request --save
+
+yarn add request-promise-native
+// or
+npm install request-promise-native --save
 ```

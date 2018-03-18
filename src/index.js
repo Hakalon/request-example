@@ -6,6 +6,12 @@ const headers = getAuthorizationHeader();
 const city = 'Taipei';
 const route = '912';
 
+/*
+  With the request.defaulfs, you can pre-defined the basic url.
+  When you use it to do GET or POST, you only need to add the rest of url.
+  So when I use motcSenderPro.get({url: `${city}/1234`})
+  I actually do the GET to http://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/City/Taipei/1234
+*/
 const motcSenderPro = reqSenderPro.defaults({
   baseUrl: 'http://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/City/',
   // headers: headers
