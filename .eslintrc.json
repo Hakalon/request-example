@@ -6,6 +6,7 @@
         "no-plusplus":"off",
         "comma-dangle":"off",
         "arrow-parens": ["error", "as-needed"],
-        "no-use-before-define": "warn"
+        "no-use-before-define": "warn",
+        "no-unused-vars":"warn"
     }
 }

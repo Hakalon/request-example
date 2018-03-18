@@ -1,20 +1,29 @@
-const reqSender = require('request-promise-native');
+const reqSenderPro = require('request-promise-native');
+const reqSender = require('request');
 const JsSHA = require('jssha');
 
-
-const motcSender = reqSender.defaults({
-  baseUrl: 'http://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/City/',
-  headers: getAuthorizationHeader()
-});
-// let apiAddr = 'http://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/City/Taipei/912?$top=1&$format=JSON';
+const headers = getAuthorizationHeader();
 const city = 'Taipei';
 const route = '912';
 
-console.log('Starting sending request!');
+const motcSenderPro = reqSenderPro.defaults({
+  baseUrl: 'http://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/City/',
+  // headers: headers
+  headers
+});
 
-motcSender.get({
-  url: `${city}/${route}?$top=1&$format=JSON`,
-})
+const motcSender = reqSender.defaults({
+  baseUrl: 'http://ptx.transportdata.tw/MOTC/v2/Bus/RealTimeByFrequency/City/',
+  // headers: headers
+  headers
+});
+
+// #region Request with promise-native
+
+// Using Promise to do the request.
+console.log('Starting sending request by request-promise-native!');
+
+motcSenderPro.get({ url: `${city}/${route}?$top=1&$format=JSON` })
   .then(resp => {
     console.log('This is the response!');
     console.log(JSON.parse(resp));
@@ -22,6 +31,24 @@ motcSender.get({
   .catch(err => {
     console.log(`There is an error! ${err}`);
   });
+// #endregion
+
+// #region Request without promise
+
+// Not using Promise to do the request.
+console.log('Starting sending request by request!');
+
+motcSender.get({ url: `${city}/${route}?$top=1&$format=JSON` }, (err, resp, body) => {
+  if (err) {
+    console.log('There is something wrong on sending request by request.');
+    console.log(err);
+  }
+  // console.log('Here is the response: ');
+  // console.log(resp);
+  console.log('Here is the body: ');
+  console.log(JSON.parse(body));
+});
+// #endregion
 
 // MOTC授權認證
 function getAuthorizationHeader() {
